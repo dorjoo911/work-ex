@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabbed Work Experience</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .tabs {
+            display: flex;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            margin-right: 5px;
+            background-color: #f1f1f1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 8px 8px 0 0;
+        }
+        .tab.active {
+            background-color: white;
+            font-weight: bold;
+        }
+        .tab-content {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 0 0 8px 8px;
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="tabs">
+    <div class="tab" data-tab="tab1">
+        <span>🧑‍💻</span>
+        <span>Software</span>
+    </div>
+    <div class="tab" data-tab="tab2">
+        <span>👷‍♂️</span>
+        <span>Hardware</span>
+    </div>
+    <div class="tab" data-tab="tab3">
+        <span>🏦</span>
+        <span>Finance</span>
+    </div>
+</div>
+
+<div id="tab1" class="tab-content">
+    <h2>5 years in Software Development</h2>
+    <ul>
+        <li>Designed and developed custom websites for small businesses using WordPress, HTML, CSS, and JavaScript.</li>
+        <li>Built and deployed MERN stack applications with a focus on React front-end and MongoDB back-end.</li>
+        <li>Managed complete project lifecycles from initial requirements gathering and budgeting to design, development, testing, and deployment.</li>
+        <li>Implemented CI/CD pipelines through GitHub, AWS, and Google Cloud Platform, delivering seamless and efficient deployments.</li>
+        <li>Deployed applications on Netlify and Vercel, ensuring optimal site performance based on project needs.</li>
+        <li>Customized open-source ERP and CRM solutions (e.g., Odoo), enhancing UI and adding new features.</li>
+        <li>Conducted QA testing with Java Selenium, ensuring robust, bug-free applications.</li>
+    </ul>
+    <div class="achievements">
+        <h3>Achievements:</h3>
+        <ul>
+            <li>Increased client satisfaction by 25% through improved communication and on-time delivery of projects.</li>
+            <li>Optimized page load times by up to 40% through code refactoring and caching strategies, improving user engagement.</li>
+            <li>Delivered over 20 successful website projects in under budget and within tight deadlines.</li>
+        </ul>
+    </div>
+</div>
+<div id="tab2" class="tab-content">
+    <h2>5 years in House Remodeling</h2>
+    <ul>
+        <li>Oversaw end-to-end kitchen remodeling projects, managing budgets, schedules, and resource allocations.</li>
+        <li>Led large-scale renovations, including multi-unit community projects, directing teams of 15+ workers.</li>
+        <li>Interpreted construction blueprints, specializing in sprinkler systems, and handled development-to-installation tasks.</li>
+        <li>Installed and maintained kitchen cabinets, countertops (marble, granite, quartz), and flooring (hardwood, tile, ceramic).</li>
+        <li>Supervised drywall, painting, and general home maintenance, ensuring high-quality project results.</li>
+        <li>Sold and advised clients on cabinet and countertop materials, tailoring solutions to individual preferences.</li>
+        <li>Created and assembled custom carpentry products, including tables and chairs, and managed full-service painting.</li>
+        <li>Coordinated warehousing, supply management, and punch-list processes, maintaining consistent project timelines.</li>
+        <li>Operated forklifts and handled construction logistics to uphold safety and efficiency standards.</li>
+    </ul>
+    <div class="achievements">
+        <h3>Achievements:</h3>
+        <ul>
+            <li>Reduced material costs by 15% through negotiations with suppliers while maintaining high-quality outcomes.</li>
+            <li>Completed a 100-unit renovation project within the allocated timeframe and budget, receiving positive client feedback.</li>
+            <li>Led three specialized teams across multiple renovation sites, streamlining workflows and improving productivity by 20%.</li>
+        </ul>
+    </div>
+</div>
+<div id="tab3" class="tab-content">
+    <h2>5 years in Finance</h2>
+    <ul>
+        <li>Facilitated daily banking operations, including cash transactions, check processing, account openings/closings, and ledger balancing.</li>
+        <li>Provided financial advisory services on credit cards, personal loans, mortgages, and other secured lending products.</li>
+        <li>Analyzed customer financials to determine loan eligibility, tailoring solutions to specific client needs.</li>
+        <li>Underwrote and approved loans within designated limits; escalated larger requests with comprehensive risk assessments.</li>
+        <li>Conducted on-site business visits to evaluate financial health, lending viability, and repayment capacities.</li>
+        <li>Monitored market trends, ensuring compliance with consumer laws and optimizing risk management.</li>
+        <li>Generated detailed reports—quarterly, monthly, and annual—tracking loan performance and financial risks.</li>
+        <li>Maintained strong client relationships through personalized financial guidance and reliable follow-up.</li>
+    </ul>
+    <div class="achievements">
+        <h3>Achievements:</h3>
+        <ul>
+            <li>Managed a personal loan portfolio of $2M with a loan default rate consistently below 2%.</li>
+            <li>Streamlined the loan application process by implementing a standardized checklist, reducing approval time by 30%.</li>
+            <li>Recognized by senior management for outstanding customer service and compliance with banking regulations.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+
+            tab.classList.add('active');
+            document.getElementById(tab.dataset.tab).classList.add('active');
+        });
+    });
+
+    // Set the first tab as active by default
+    tabs[0].classList.add('active');
+    contents[0].classList.add('active');
+</script>
+
+</body>
+</html>
