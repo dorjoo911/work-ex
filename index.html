@@ -131,7 +131,19 @@ Feel free to reach out for a quote or just to chat about options!</strong>
     </div>
 </div>
 
+<div class="contact-form-section" style="margin-top: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 8px;">
+    <p><strong>Email me at: </strong>emunkh302@gmail.com</p>
+    <label for="mailto-message" style="display: block; margin-bottom: 5px;">Your Message:</label>
+    <textarea id="mailto-message" rows="5" style="width: 95%; margin-bottom: 10px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+    <button onclick="sendMail()" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Open Email Client</button>
+</div>
 <script>
+    function sendMail() {
+        const message = document.getElementById('mailto-message').value;
+        const subject = "Message from a rider"; // Optional subject
+        const mailtoLink = `mailto:emunkh302@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+        window.location.href = mailtoLink; // Opens the email client
+    }
     const tabs = document.querySelectorAll('.tab');
     const contents = document.querySelectorAll('.tab-content');
 
