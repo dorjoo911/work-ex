@@ -37,6 +37,24 @@
         .tab-content.active {
             display: block;
         }
+        .play-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #28a745; /* green color */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.play-button:hover {
+  background-color: #218838; /* darker green on hover */
+}
+
     </style>
 </head>
 <body>
@@ -136,7 +154,12 @@ Feel free to reach out for a quote or just to chat about options!</strong>
     <label for="mailto-message" style="display: block; margin-bottom: 5px;">Your Message:</label>
     <textarea id="mailto-message" rows="5" style="width: 95%; margin-bottom: 10px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
     <button onclick="sendMail()" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Open Email Client</button>
+    OR
+    <a href="https://flashflag.netlify.app/" target="_blank" class="play-button">
+        Play Game – Check your knowledge
+      </a>  
 </div>
+
 <script>
     function sendMail() {
         const message = document.getElementById('mailto-message').value;
