@@ -1,189 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabbed Work Experience</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .tabs {
-            display: flex;
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
-        .tab {
-            padding: 10px 20px;
-            border: 1px solid #ccc;
-            border-bottom: none;
-            margin-right: 5px;
-            background-color: #f1f1f1;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-radius: 8px 8px 0 0;
-        }
-        .tab.active {
-            background-color: white;
-            font-weight: bold;
-        }
-        .tab-content {
-            border: 1px solid #ccc;
-            padding: 20px;
-            border-radius: 0 0 8px 8px;
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        .play-button {
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: #28a745; /* green color */
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  text-decoration: none;
-  border: none;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Work Experience Tabs</title>
+  <style>
+    :root {
+      --active-glow-color: #007bff;
+    }
 
-.play-button:hover {
-  background-color: #218838; /* darker green on hover */
-}
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+      transition: background 0.6s ease;
+      background: var(--bg-color, #f7f9fc);
+    }
 
-    </style>
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      flex: 1 1 auto;
+      min-width: 120px;
+      padding: 12px 20px;
+      background: #e9ecef;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 2px solid transparent;
+      position: relative;
+    }
+
+    .tab.active {
+      background-color: #fff;
+      color: var(--active-glow-color);
+      border-color: var(--active-glow-color);
+      font-weight: bold;
+      box-shadow: 0 0 10px var(--active-glow-color), 0 0 20px var(--active-glow-color);
+    }
+
+    .tab-content {
+      display: none;
+      background: #fff;
+      padding: 20px;
+      border: 2px solid var(--active-glow-color);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      max-width: 1000px;
+      margin: 0 auto;
+      transition: border-color 0.3s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    h2, h3 {
+      color: var(--active-glow-color);
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    strong {
+      display: block;
+      margin-top: 20px;
+    }
+
+    .contact-form-section {
+      background: #fff;
+      border: 2px solid #ccc;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: var(--active-glow-color);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .play-button {
+      display: inline-block;
+      margin-left: 10px;
+      padding: 12px 24px;
+      background-color: #28a745;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      border: none;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .play-button:hover {
+      background-color: #218838;
+      box-shadow: 0 0 10px #28a745;
+    }
+
+    @media (max-width: 768px) {
+      .tabs {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .tab {
+        border-radius: 12px;
+      }
+
+      .tab-content {
+        padding: 16px;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <div class="tabs">
-    <div class="tab" data-tab="tab1">
-        <span>🧑‍💻</span>
-        <span>Software</span>
-    </div>
-    <div class="tab" data-tab="tab2">
-        <span>👷‍♂️</span>
-        <span>Hardware</span>
-    </div>
-    <div class="tab" data-tab="tab3">
-        <span>🏦</span>
-        <span>Finance</span>
-    </div>
+  <div class="tab" data-tab="tab1" data-color="#007bff">🧑‍💻 Software</div>
+  <div class="tab" data-tab="tab2" data-color="#dc3545">👷‍♂️ Hardware</div>
+  <div class="tab" data-tab="tab3" data-color="#6f42c1">🏦 Finance</div>
 </div>
 
 <div id="tab1" class="tab-content">
-    <h2>in Software Development</h2>
-    <ul>
-        <li>Designed and developed custom websites for small businesses using WordPress, HTML, CSS, and JavaScript.</li>
-        <li>Built and deployed MERN stack applications with a focus on React front-end and MongoDB back-end.</li>
-        <li>Managed complete project lifecycles from initial requirements gathering and budgeting to design, development, testing, and deployment.</li>
-        <li>Implemented CI/CD pipelines through GitHub, AWS, and Google Cloud Platform, delivering seamless and efficient deployments.</li>
-        <li>Deployed applications on Netlify and Vercel, ensuring optimal site performance based on project needs.</li>
-        <li>Customized open-source ERP and CRM solutions (e.g., Odoo), enhancing UI and adding new features.</li>
-        <li>Conducted QA testing with Java Selenium, ensuring robust, bug-free applications.</li>
-    </ul>
-    <div class="achievements">
-        <h3>Achievements:</h3>
-        <ul>
-            <li>Increased client satisfaction by 25% through improved communication and on-time delivery of projects.</li>
-            <li>Optimized page load times by up to 40% through code refactoring and caching strategies, improving user engagement.</li>
-            <li>Delivered over 20 successful website projects in under budget and within tight deadlines.</li>
-        </ul>
-    </div>
-    <div>
-        <hr/>
-        <strong>Need a website or app for your business? I build custom websites, web apps, WordPress sites, and ERP/CRM solutions that fit your exact needs. From simple landing pages to full-stack MERN applications, or even customized Odoo systems—I handle it all, start to finish.
-            Looking for something fast, reliable, and within budget? Let’s build it together.</strong>
-    </div>
-</div>
-<div id="tab2" class="tab-content">
-    <h2>in House Remodeling</h2>
-    <ul>
-        <li>Oversaw end-to-end kitchen remodeling projects, managing budgets, schedules, and resource allocations.</li>
-        <li>Led large-scale renovations, including multi-unit community projects, directing teams of 15+ workers.</li>
-        <li>Interpreted construction blueprints, specializing in sprinkler systems, and handled development-to-installation tasks.</li>
-        <li>Installed and maintained kitchen cabinets, countertops (marble, granite, quartz), and flooring (hardwood, tile, ceramic).</li>
-        <li>Supervised drywall, painting, and general home maintenance, ensuring high-quality project results.</li>
-        <li>Sold and advised clients on cabinet and countertop materials, tailoring solutions to individual preferences.</li>
-        <li>Created and assembled custom carpentry products, including tables and chairs, and managed full-service painting.</li>
-        <li>Coordinated warehousing, supply management, and punch-list processes, maintaining consistent project timelines.</li>
-        <li>Operated forklifts and handled construction logistics to uphold safety and efficiency standards.</li>
-    </ul>
-    <div class="achievements">
-        <h3>Achievements:</h3>
-        <ul>
-            <li>Reduced material costs by 15% through negotiations with suppliers while maintaining high-quality outcomes.</li>
-            <li>Completed a 100-unit renovation project within the allocated timeframe and budget, receiving positive client feedback.</li>
-            <li>Led three specialized teams across multiple renovation sites, streamlining workflows and improving productivity by 20%.</li>
-        </ul>
-    </div>
-    <div>
-        <hr/>
-    <strong>Still in the kitchen remodeling game! If you or someone you know needs quality kitchen cabinets or countertops (granite, quartz, marble), I can help. I’ve led full kitchen remodels—handling everything from design and installation to flooring, painting, and custom carpentry. Whether it’s a single home or a large multi-unit project, I’ve got the experience and the materials.
-I can give you the best price within your budget, without cutting corners on quality.
-Feel free to reach out for a quote or just to chat about options!</strong>
-    </div>
-</div>
-<div id="tab3" class="tab-content">
-    <h2>in Finance</h2>
-    <ul>
-        <li>Facilitated daily banking operations, including cash transactions, check processing, account openings/closings, and ledger balancing.</li>
-        <li>Provided financial advisory services on credit cards, personal loans, mortgages, and other secured lending products.</li>
-        <li>Analyzed customer financials to determine loan eligibility, tailoring solutions to specific client needs.</li>
-        <li>Underwrote and approved loans within designated limits; escalated larger requests with comprehensive risk assessments.</li>
-        <li>Conducted on-site business visits to evaluate financial health, lending viability, and repayment capacities.</li>
-        <li>Monitored market trends, ensuring compliance with consumer laws and optimizing risk management.</li>
-        <li>Generated detailed reports—quarterly, monthly, and annual—tracking loan performance and financial risks.</li>
-        <li>Maintained strong client relationships through personalized financial guidance and reliable follow-up.</li>
-    </ul>
-    <div class="achievements">
-        <h3>Achievements:</h3>
-        <ul>
-            <li>Managed a personal loan portfolio of $2M with a loan default rate consistently below 2%.</li>
-            <li>Streamlined the loan application process by implementing a standardized checklist, reducing approval time by 30%.</li>
-            <li>Recognized by senior management for outstanding customer service and compliance with banking regulations.</li>
-        </ul>
-    </div>
+  <h2>in Software Development</h2>
+  <ul>
+    <li>Designed and developed custom websites using WordPress, HTML, CSS, and JavaScript.</li>
+    <li>Built and deployed MERN stack apps focused on React and MongoDB.</li>
+    <li>Managed full project lifecycle from start to launch.</li>
+    <li>Used GitHub Actions, AWS, and GCP for CI/CD pipelines.</li>
+    <li>Deployed on Netlify and Vercel.</li>
+    <li>Customized ERP/CRM systems like Odoo.</li>
+    <li>QA testing with Selenium (Java).</li>
+  </ul>
+  <h3>Achievements:</h3>
+  <ul>
+    <li>Improved client satisfaction by 25% with on-time delivery.</li>
+    <li>Boosted performance by 40% with code optimization.</li>
+    <li>Delivered 20+ successful projects under budget.</li>
+  </ul>
+  <strong>Need a website or app? I build full-stack solutions. Let’s make your idea real!</strong>
 </div>
 
-<div class="contact-form-section" style="margin-top: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 8px;">
-    <p><strong>Email me at: </strong>emunkh302@gmail.com</p>
-    <label for="mailto-message" style="display: block; margin-bottom: 5px;">Your Message:</label>
-    <textarea id="mailto-message" rows="5" style="width: 95%; margin-bottom: 10px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
-    <button onclick="sendMail()" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Open Email Client</button>
-    OR
-    <a href="https://flashflag.netlify.app/" target="_blank" class="play-button">
-        Play Game – Check your knowledge
-      </a>  
+<div id="tab2" class="tab-content">
+  <h2>in House Remodeling</h2>
+  <ul>
+    <li>Led kitchen remodels, managed budgets, and coordinated teams.</li>
+    <li>Installed floors, cabinets, drywall, and countertops.</li>
+    <li>Skilled in painting, carpentry, and material selection.</li>
+    <li>Oversaw warehouse logistics and safety protocols.</li>
+  </ul>
+  <h3>Achievements:</h3>
+  <ul>
+    <li>Saved 15% on material costs while keeping quality high.</li>
+    <li>Completed a 100-unit renovation project on time.</li>
+    <li>Boosted productivity by 20% across multiple teams.</li>
+  </ul>
+  <strong>Want a beautiful kitchen or custom cabinets? Reach out for a quote!</strong>
+</div>
+
+<div id="tab3" class="tab-content">
+  <h2>in Finance</h2>
+  <ul>
+    <li>Managed bank operations: cash, loans, and client services.</li>
+    <li>Assessed loans and financial risk.</li>
+    <li>Visited businesses to review financial health.</li>
+    <li>Generated detailed reports and ensured compliance.</li>
+  </ul>
+  <h3>Achievements:</h3>
+  <ul>
+    <li>Managed a $2M loan portfolio with less than 2% default.</li>
+    <li>Cut loan approval time by 30% through better processes.</li>
+    <li>Recognized for excellent customer service and accuracy.</li>
+  </ul>
+</div>
+
+<div class="contact-form-section">
+  <p><strong>Email me at:</strong> emunkh302@gmail.com</p>
+  <label for="mailto-message">Your Message:</label>
+  <textarea id="mailto-message" rows="5"></textarea>
+  <button onclick="sendMail()">Send Email</button> OR
+  <br/>
+  <a href="https://flashflag.netlify.app/" target="_blank" class="play-button">Check your knowledge</a>
+</hr>
 </div>
 
 <script>
-    function sendMail() {
-        const message = document.getElementById('mailto-message').value;
-        const subject = "Message from a rider"; // Optional subject
-        const mailtoLink = `mailto:emunkh302@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
-        window.location.href = mailtoLink; // Opens the email client
-    }
-    const tabs = document.querySelectorAll('.tab');
-    const contents = document.querySelectorAll('.tab-content');
+  function sendMail() {
+    const message = document.getElementById('mailto-message').value;
+    const subject = "Message from a visitor";
+    const mailtoLink = `mailto:emunkh302@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+    window.location.href = mailtoLink;
+  }
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active'));
-            contents.forEach(content => content.classList.remove('active'));
+  const tabs = document.querySelectorAll('.tab');
+  const contents = document.querySelectorAll('.tab-content');
 
-            tab.classList.add('active');
-            document.getElementById(tab.dataset.tab).classList.add('active');
-        });
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active from all
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+
+      // Set color and active class
+      const selectedColor = tab.dataset.color;
+      document.documentElement.style.setProperty('--active-glow-color', selectedColor);
+      document.body.style.setProperty('--bg-color', selectedColor + '10'); // light tint
+
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('active');
     });
+  });
 
-    // Set the first tab as active by default
-    tabs[0].classList.add('active');
-    contents[0].classList.add('active');
+  // Initialize first tab
+  tabs[0].click();
 </script>
-
 </body>
 </html>
